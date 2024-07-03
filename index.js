@@ -10,24 +10,24 @@ expressApp.use(express.static('static'))
 expressApp.use(express.json());
 require('dotenv').config();
 
-const { Telegraf } = require('telegraf');
+// const { Telegraf } = require('telegraf');
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+// const bot = new Telegraf(process.env.BOT_TOKEN);
 
-const coin = 'lrcusdt';
+// const coin = 'lrcusdt';
 
-const ws = new WebSocket(`wss://fstream.binance.com/ws/${coin}@trade`);
+// const ws = new WebSocket(`wss://fstream.binance.com/ws/${coin}@trade`);
 
-const job = new CronJob(
-	'00 01 * * * *', // cronTime
-	function () {
-        console.log(123123);
-        bot.telegram.sendMessage(1766285817, "ping" , {})
-	}, // onTick
-	null, // onComplete
-	true, // start
-	'Asia/Ho_Chi_Minh' // timeZone
-);
+// const job = new CronJob(
+// 	'00 01 * * * *', // cronTime
+// 	function () {
+//         console.log(123123);
+//         bot.telegram.sendMessage(1766285817, "ping" , {})
+// 	}, // onTick
+// 	null, // onComplete
+// 	true, // start
+// 	'Asia/Ho_Chi_Minh' // timeZone
+// );
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
