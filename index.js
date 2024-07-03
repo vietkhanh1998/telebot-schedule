@@ -8,6 +8,7 @@ const {WebSocket, WebSocketServer} = require("ws")
 const port = process.env.PORT || 8888;
 expressApp.use(express.static('static'))
 expressApp.use(express.json());
+const app = express();
 require('dotenv').config();
 
 // const { Telegraf } = require('telegraf');
