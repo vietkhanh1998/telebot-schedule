@@ -1,11 +1,12 @@
 
+const { Telegraf } = require('telegraf');
 const express = require('express')
 const app = express()
 const cron = require('node-cron');
 const {WebSocket, WebSocketServer} = require("ws")
 require('dotenv').config();
 const botTele = new Telegraf(process.env.BOT_TOKEN_TELEGRAM);
-const { Telegraf } = require('telegraf');
+
 
 app.use(express.static('static'))
 app.use(express.json());
