@@ -8,7 +8,7 @@ const {WebSocket, WebSocketServer} = require("ws")
 const port = process.env.PORT || 8888;
 expressApp.use(express.static('static'))
 expressApp.use(express.json());
-const app = express();
+
 require('dotenv').config();
 
 // const { Telegraf } = require('telegraf');
@@ -30,9 +30,9 @@ require('dotenv').config();
 // 	'Asia/Ho_Chi_Minh' // timeZone
 // );
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+expressApp.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+expressApp.listen(3000, () => console.log("Server ready on port 3000."));
 
 
 // job.start()
