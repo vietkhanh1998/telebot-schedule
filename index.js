@@ -5,7 +5,7 @@ const app = express()
 const cron = require('node-cron');
 const {WebSocket, WebSocketServer} = require("ws")
 require('dotenv').config();
-const botTele = new Telegraf(process.env.BOT_TOKEN_TELEGRAM);
+const bot = new Telegraf(process.env.BOT_TOKEN_TELEGRAM);
 
 
 app.use(express.static('static'))
@@ -53,7 +53,7 @@ app.use(express.json());
 // });
 
 cron.schedule('* * * * *', () => {
-  botTele.telegram.sendMessage(1766285817, "ping" , {})
+  bot.telegram.sendMessage(1766285817, "ping" , {})
 });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
