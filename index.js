@@ -1,19 +1,18 @@
 
 const express = require('express')
-const expressApp = express()
-const { CronJob } = require("cron")
-const axios = require("axios");
-const path = require("path")
+const app = express()
+const cron = require('node-cron');
 const {WebSocket, WebSocketServer} = require("ws")
-const port = process.env.PORT || 8888;
-expressApp.use(express.static('static'))
-expressApp.use(express.json());
-
 require('dotenv').config();
+const botTele = new Telegraf(process.env.BOT_TOKEN_TELEGRAM);
+const { Telegraf } = require('telegraf');
 
-// const { Telegraf } = require('telegraf');
+app.use(express.static('static'))
+app.use(express.json());
 
-// const bot = new Telegraf(process.env.BOT_TOKEN);
+
+
+
 
 // const coin = 'lrcusdt';
 
@@ -23,17 +22,12 @@ require('dotenv').config();
 // 	'00 01 * * * *', // cronTime
 // 	function () {
 //         console.log(123123);
-//         bot.telegram.sendMessage(1766285817, "ping" , {})
+//         botTele.telegram.sendMessage(1766285817, "ping" , {})
 // 	}, // onTick
 // 	null, // onComplete
 // 	true, // start
 // 	'Asia/Ho_Chi_Minh' // timeZone
 // );
-
-expressApp.get("/", (req, res) => res.send("Express on Vercel"));
-
-expressApp.listen(3000, () => console.log("Server ready on port 3000."));
-
 
 // job.start()
 
@@ -56,5 +50,13 @@ expressApp.listen(3000, () => console.log("Server ready on port 3000."));
 
 //   ws.send('something');
 // });
+
+cron.schedule('* * * * *', () => {
+  botTele.telegram.sendMessage(1766285817, "ping" , {})
+});
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+app.listen(3000, () => console.log("Server ready on port 3000."));
   
-// bot.launch()
+bot.launch()
