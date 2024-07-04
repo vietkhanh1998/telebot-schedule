@@ -10,7 +10,7 @@ app.use(express.static('static'))
 app.use(express.json());
 
 // 00 7 * * 0-6
-cron.schedule('* * * * * *', () => {
+cron.schedule('* * * * *', () => {
   axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=loopring&vs_currencies=usd`)
   .then(response => {
     const message = `Hello, today the Loopring price is ${response.data.loopring.usd}USD`
