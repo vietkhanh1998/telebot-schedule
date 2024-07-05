@@ -25,8 +25,6 @@ app.use(express.json());
 cron.schedule('*/1 * * * *', () => {
   const message = `123`
   bot.telegram.sendMessage("1766285817", message, {})
-}, {
-  scheduled: true
 });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
