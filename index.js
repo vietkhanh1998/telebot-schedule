@@ -26,8 +26,7 @@ cron.schedule('*/1 * * * *', () => {
   const message = `123`
   bot.telegram.sendMessage("1766285817", message, {})
 }, {
-  scheduled: true,
-  timezone: "Asia/Ho_Chi_Minh"
+  scheduled: true
 });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
