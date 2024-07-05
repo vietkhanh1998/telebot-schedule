@@ -22,7 +22,7 @@ app.use(express.json());
 //   timezone: "Asia/Ho_Chi_Minh"
 // });
 
-cron.schedule('* * * * * *', () => {
+cron.schedule('*/1 * * * *', () => {
   const message = `123`
   bot.telegram.sendMessage("1766285817", message, {})
 }, {
