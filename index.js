@@ -22,7 +22,7 @@ app.use(express.json());
 //   timezone: "Asia/Ho_Chi_Minh"
 // });
 
-cron.schedule('* * * * *', () => {
+let runTask = cron.schedule('* * * * *', () => {
   const message = `123`
   bot.telegram.sendMessage("1766285817", message, {})
 }, {
@@ -31,7 +31,7 @@ cron.schedule('* * * * *', () => {
 });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
-
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
-  
+
+runTask.start()
 bot.launch()
