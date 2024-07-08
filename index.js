@@ -1,36 +1,53 @@
 const { Telegraf } = require('telegraf');
 const express = require('express')
-const axios = require("axios");
+const schedule = require('node-schedule');
 const app = express()
-const cron = require('node-cron');
-require('dotenv').config();
 
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3000
 const bot = new Telegraf(process.env.BOT_TOKEN_TELEGRAM);
+
 app.use(express.static('static'))
 app.use(express.json());
 
-// cron.schedule('00 7 * * *', () => {
-//   axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=loopring&vs_currencies=usd`)
-//   .then(response => {
-//     const message = `Hello, today the Loopring price is ${response.data.loopring.usd}USD`
-//     bot.telegram.sendMessage("1766285817", message, {})
-//   })
-// }, {
-//   scheduled: true,
-//   timezone: "Asia/Ho_Chi_Minh"
-// });
+const wordsList = [
+  ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"],
+  ["mango", "nectarine", "orange", "papaya", "quince", "raspberry", "strawberry", "tangerine", "ugli fruit", "vanilla"],
+  ["watermelon", "xigua", "yam", "zucchini", "avocado", "blueberry", "cantaloupe", "durian", "eggplant", "feijoa"]
+];
 
-cron.schedule('*/1 * * * *', () => {
-  const message = `123`
-  bot.telegram.sendMessage("1766285817", message, {})
-}, {
-  scheduled: true,
-  timezone: "Asia/Ho_Chi_Minh"
+const sendWords = (chatId, words) => {
+  bot.telegram.sendMessage(chatId, `Here are your new words:\n${words.join(', ')}`, {});
+};
+
+const chatId = '1766285817'; // Replace with your chat ID
+
+schedule.scheduleJob('* * * * *', () => sendWords(chatId, wordsList[0])); // 8 AM
+schedule.scheduleJob('0 12 * * *', () => sendWords(chatId, wordsList[1])); // 12 PM
+schedule.scheduleJob('0 18 * * *', () => sendWords(chatId, wordsList[2])); // 6 PM
+
+// bot.command('d', async ctx => {  
+//   try {
+//     const videoUrl = ctx.message.text.split(" ")[1];
+//     const videoInfo = await ytdl.getInfo(videoUrl);
+//     const audioFormats = ytdl.filterFormats(videoInfo.formats, "audioonly");
+//     // audioFormats.map((item) => {
+//     //   console.log(item);
+//     //   // bot.telegram.sendMessage(ctx.chat.id, item.url, {})
+//     // });
+
+//     console.log(audioFormats[0].url, __dirname);
+   
+//   } catch (error) {
+//     next(error);
+//   }
+  
+// })
+
+app.get("/", (req, res) => {
+  res.send("ok nodejs")
 });
-
-app.get("/", (req, res) => res.send("Express on Vercel"));
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
-bot.launch()
+// bot.launch()
