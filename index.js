@@ -23,7 +23,7 @@ const sendWords = (chatId, words) => {
 
 const chatId = '1766285817'; // Replace with your chat ID
 
-schedule.scheduleJob('* * * * *', () => sendWords(chatId, wordsList[0])); // 8 AM
+schedule.scheduleJob('*/5 * * * *', () => sendWords(chatId, wordsList[0])); // 8 AM
 schedule.scheduleJob('0 12 * * *', () => sendWords(chatId, wordsList[1])); // 12 PM
 schedule.scheduleJob('0 18 * * *', () => sendWords(chatId, wordsList[2])); // 6 PM
 
