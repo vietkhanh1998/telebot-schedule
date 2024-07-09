@@ -19,6 +19,7 @@ pingNewWords(chatId, schedule, bot)
 app.get("/", (req, res) => {
   res.send("ok nodejs")
 });
+
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
 bot.launch()
