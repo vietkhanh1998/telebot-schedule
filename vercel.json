@@ -1,8 +1,11 @@
 {
-    "crons": [
-        {
-          "path": "/api/cron/new_words_ping.js",
-          "schedule": "*/1 * * * *"
-        }
-    ]
+    "version": 2,
+    "builds": [{
+        "src": "./index.js",
+        "use": "@vercel/node"
+    }],
+    "routes": [{
+        "src": "/(.*)",
+        "dest": "/"
+    }]
 }
