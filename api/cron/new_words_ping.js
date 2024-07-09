@@ -6,7 +6,7 @@ const pingNewWords = (chatId, schedule, bot) => {
     ];
     
     const sendWords = (chatId, words) => {
-        bot.telegram.sendMessage(chatId, `Here are your new words:\n${words.join(', ')}`, {});
+        bot.telegram.sendMessage(chatId, `123123Here are your new words:\n${words.join(', ')}`, {});
     };
     
     schedule.scheduleJob('*/1 * * * *', () => sendWords(chatId, wordsList[0])); 
