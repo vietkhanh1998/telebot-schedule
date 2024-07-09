@@ -22,3 +22,13 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
 bot.launch()
+
+// "version": 2,
+// "builds": [{
+//     "src": "./index.js",
+//     "use": "@vercel/node"
+// }],
+// "routes": [{
+//     "src": "/(.*)",
+//     "dest": "/"
+// }],
