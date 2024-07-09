@@ -45,5 +45,5 @@ app.get("/", (req, res) => {
   res.send("ok nodejs")
 });
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
-schedule.scheduleJob('*/5 * * * *', () => sendWords(chatId, wordsList[0])); 
+schedule.scheduleJob('* * * * *', () => sendWords(chatId, wordsList[0])); 
 // bot.launch()
