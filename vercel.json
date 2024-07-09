@@ -7,11 +7,5 @@
     "routes": [{
         "src": "/(.*)",
         "dest": "/"
-    }],
-    "crons": [
-        {
-          "path": "/api/cron/new_words_ping.js",
-          "schedule": "*/1 * * * *"
-        }
-    ]
+    }]
 }
