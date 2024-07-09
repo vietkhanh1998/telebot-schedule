@@ -23,8 +23,6 @@ const sendWords = (chatId, words) => {
 
 const chatId = '1766285817'; // Replace with your chat ID
 
-schedule.scheduleJob('*/5 * * * *', () => sendWords(chatId, wordsList[0])); 
-
 // bot.command('d', async ctx => {  
 //   try {
 //     const videoUrl = ctx.message.text.split(" ")[1];
@@ -47,5 +45,5 @@ app.get("/", (req, res) => {
   res.send("ok nodejs")
 });
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
-
+schedule.scheduleJob('*/5 * * * *', () => sendWords(chatId, wordsList[0])); 
 // bot.launch()
