@@ -23,6 +23,13 @@ bot.on('message', (msg) => {
   receivePrompt(receiveChat, process.env.GEMINI_API_KEY, bot, chatId)
 });
 
+
+bot.command('start', ctx => {
+  console.log(ctx.from)
+  bot.telegram.sendMessage(ctx.chat.id, 'Hello there! Welcome to the Code Capsules telegram bot.\nI respond to /ethereum. Please try it', {
+  })
+})
+
 app.get("/", (req, res) => {
   res.send("ok nodejs")
 });
