@@ -19,7 +19,6 @@ const chatId = process.env.BOT_CHAT_ID;
 
 bot.on('message', (msg) => {
   const receiveChat = msg.update.message.text;
-  bot.telegram.sendMessage(chatId, "in", { })
   receivePrompt(receiveChat, process.env.GEMINI_API_KEY, bot, chatId)
 });
 
