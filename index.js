@@ -19,12 +19,12 @@ const chatId = process.env.BOT_CHAT_ID;
 
 bot.command('query', ctx => {
 
-  bot.on('message', (msg) => {
-    const receiveChat = msg.update.message.text;
-    bot.telegram.sendMessage(chatId, "in", { })
-    receivePrompt(receiveChat, process.env.GEMINI_API_KEY, bot, chatId)
-  });
-  
+  // bot.on('message', (msg) => {
+  //   const receiveChat = msg.update.message.text;
+  //   bot.telegram.sendMessage(chatId, "in", { })
+  //   receivePrompt(receiveChat, process.env.GEMINI_API_KEY, bot, chatId)
+  // });
+
   console.log(ctx.from)
   bot.telegram.sendMessage(ctx.chat.id, 'Hello there! Welcome to the Code Capsules telegram bot.\nI respond to /ethereum. Please try it', {
   })
