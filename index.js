@@ -15,7 +15,7 @@ app.use(express.json());
 
 const chatId = process.env.BOT_CHAT_ID; 
 
-// pingNewWords(chatId, schedule, bot)
+pingNewWords(chatId, schedule, bot)
 
 bot.command('query', ctx => {
 
